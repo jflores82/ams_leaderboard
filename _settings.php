@@ -23,6 +23,7 @@ $sector3 = array();
 $best_s1_a = array();
 $best_s2_a = array();
 $best_s3_a = array();
+$lapid = array();
 $total_laps_global = 0;
 $odd = 0;
 $p = 0;

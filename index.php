@@ -98,6 +98,7 @@ $r_track = mysqli_query($db, $query_track);
 					$sector3_time = $j['s3'];
 					$drivers[$driver] = $lap_time;
 					$fuel_list[$driver] = $fuel;
+					$lapid[$driver] = $j['pk_id'];
 					$sector1[$driver] = $sector1_time;
 					$sector2[$driver] = $sector2_time;
 					$sector3[$driver] = $sector3_time;
@@ -107,7 +108,8 @@ $r_track = mysqli_query($db, $query_track);
 			$p = 1;
 			foreach ($drivers as $key => $val) {
 				$driver_name = $key;
-				$q_driver_info = "select vehfile, cartype, carclass, carnumber, teamname, track_length from laps where (server = '$server' and track = '$track' and driver_name = '$driver_name');";
+				$id = $lapid[$driver_name];
+				$q_driver_info = "select vehfile, cartype, carclass, carnumber, teamname, track_length from laps where pk_id = '$id';";
 				$r_driver_info = mysqli_query($db, $q_driver_info); 
 				while($j = mysqli_fetch_array($r_driver_info)) { 
 					$vehfile = $j['vehfile'];
